@@ -1,2 +1,5 @@
-# CS50X-Final-Project
-A blogging web application for my CS50X course final project.
+[x] create virtualenv
+[x] install django
+[x] install pillow
+[x] add requirements.txt
+[x] start django project
