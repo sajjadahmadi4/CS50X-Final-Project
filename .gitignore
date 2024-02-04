@@ -131,6 +131,7 @@ venv.bak/
 
 # media folder
 media/
+weblog/media/
 
 # Spyder project settings
 .spyderproject

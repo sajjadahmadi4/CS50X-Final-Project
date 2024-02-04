@@ -1,5 +1,5 @@
-[x] create virtualenv
-[x] install django
-[x] install pillow
-[x] add requirements.txt
-[x] start django project
+[x] create virtualenv <br>
+[x] install django <br>
+[x] install pillow <br>
+[x] add requirements.txt <br>
+[x] start django project <br>
