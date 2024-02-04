@@ -133,6 +133,9 @@ venv.bak/
 media/
 weblog/media/
 
+# useless static assets
+weblog/blog/static/blog/assets
+
 # Spyder project settings
 .spyderproject
 .spyproject

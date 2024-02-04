@@ -7,3 +7,5 @@
 ------------
 
 [x] create new app (blog)
+[x] create Article model
+[x] create super user
