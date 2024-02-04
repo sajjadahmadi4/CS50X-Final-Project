@@ -2,6 +2,19 @@ from django.db import models
 from django.utils import timezone
 
 
+class Category(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
+    status = models.BooleanField(default=True)
+    position = models.IntegerField()
+
+    class Meta:
+        ordering = ['position']
+
+    def __str__(self):
+        return self.title
+
+
 class Article(models.Model):
     STATUS_CHOICES = (
         ('d', 'Draft'),

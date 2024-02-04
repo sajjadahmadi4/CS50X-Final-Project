@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article
+from .models import Article, Category
 
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -11,3 +11,13 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Article, ArticleAdmin)
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['position', 'title', 'slug', 'status']
+    list_filter = (['status'])
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+
+
+admin.site.register(Category, CategoryAdmin)
