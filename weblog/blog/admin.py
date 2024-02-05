@@ -3,11 +3,15 @@ from .models import Article, Category
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug', 'publish', 'status']
+    list_display = ['title', 'slug', 'publish', 'status', 'cat_to_str']
     list_filter = ('publish', 'status')
     search_fields = ('title', 'description')
     prepopulated_fields = {'slug': ('title',)}
     ordering = ['-status', '-publish']
+
+    def cat_to_str(self, obj):
+        return ", ".join([category.title for category in obj.category.all()])
+    cat_to_str.short_description = "CATEGORY"
 
 
 admin.site.register(Article, ArticleAdmin)
