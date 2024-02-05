@@ -36,3 +36,6 @@ class Article(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+    def active_categories(self):
+        return self.category.filter(status=True)
