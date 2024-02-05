@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Article
+from .models import Article, Category
 
 
 def index(request):
     context = {
-        "articles": Article.objects.filter(status='p').order_by('-publish')
+        "articles": Article.objects.filter(status='p'),
     }
     return render(
         request,

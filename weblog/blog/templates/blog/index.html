@@ -32,6 +32,11 @@
                             <a href="#!">Sajjad</a>
                             {{article.publish}}
                         </p>
+                        <div>
+                            {% for cat in article.category.all %}
+                                <a href="#">{{cat.title}}</a>
+                            {% endfor %}
+                        </div>
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
