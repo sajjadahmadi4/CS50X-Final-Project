@@ -1,10 +1,14 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from .models import Article, Category
 
 
-def index(request):
+def index(request, page=1):
+    articles_list = Article.objects.published()
+    paginator = Paginator(articles_list, 4)
+    articles = paginator.get_page(page)
     context = {
-        "articles": Article.objects.published(),
+        "articles": articles,
     }
     return render(
         request,
