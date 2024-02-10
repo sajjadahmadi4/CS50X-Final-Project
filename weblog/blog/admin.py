@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Article, Category
 
 
+# actions
 def make_published(modeladmin, request, queryset):
     rows_updated = queryset.update(status='p')
     if rows_updated == 1:
@@ -11,7 +12,6 @@ def make_published(modeladmin, request, queryset):
     modeladmin.message_user(request, "%s successfully marked as published." % message_bit)
 make_published.short_description = "Mark selected articles as published"
 
-
 def make_draft(modeladmin, request, queryset):
     rows_updated = queryset.update(status='d')
     if rows_updated == 1:
@@ -20,6 +20,25 @@ def make_draft(modeladmin, request, queryset):
         message_bit = "%s articles were" % rows_updated
     modeladmin.message_user(request, "%s successfully marked as draft" % message_bit)
 make_draft.short_description = "Mark selected articles as draft"
+
+def make_active(modeladmin, request, queryset):
+    rows_updated = queryset.update(status=True)
+    if rows_updated == 1:
+        message_bit = "1 category was"
+    else:
+        message_bit = "%s category were" % rows_updated
+    modeladmin.message_user(request, "%s successfully marked as active" % message_bit)
+make_active.short_description = "Mark selected categories as active"
+
+def make_inactive(modeladmin, request, queryset):
+    rows_updated = queryset.update(status=False)
+    if rows_updated == 1:
+        message_bit = "1 category was"
+    else:
+        message_bit = "%s category were" % rows_updated
+    modeladmin.message_user(request, "%s successfully marked as inactive" % message_bit)
+make_inactive.short_description = "Mark selected categories as inactive"
+
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'publish', 'status', 'cat_to_str']
@@ -42,6 +61,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_filter = (['status'])
     search_fields = ('title',)
     prepopulated_fields = {'slug': ('title',)}
+    actions = [make_active, make_inactive]
 
 
 admin.site.register(Category, CategoryAdmin)
