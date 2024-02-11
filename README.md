@@ -1,11 +1,6 @@
-[x] create virtualenv <br>
-[x] install django <br>
-[x] install pillow <br>
-[x] add requirements.txt <br>
-[x] start django project <br>
+# WeBlog
+### Bloggin made easy
 
-------------
+#### Here is video demo of the project [Video Demo](https://youtube.com/)
 
-[x] create new app (blog)
-[x] create Article model
-[x] create super user
+#### Description:
