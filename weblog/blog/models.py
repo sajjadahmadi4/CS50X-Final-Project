@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.html import format_html
 
 
 # my managers
@@ -45,5 +46,9 @@ class Article(models.Model):
 
     def active_categories(self):
         return self.category.filter(status=True)
+    
+    def thumbnail_tag(self):
+        return format_html(f"<img style='width: 100px; height: 75px; border-radius: 5px;' src='{self.thumbnail.url}'>")
+    thumbnail_tag.short_description = "Thumbnail"
 
     objects = ArticleManager()  # My manager

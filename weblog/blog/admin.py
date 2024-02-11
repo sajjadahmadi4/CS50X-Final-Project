@@ -41,7 +41,7 @@ make_inactive.short_description = "Mark selected categories as inactive"
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug', 'publish', 'status', 'cat_to_str']
+    list_display = ['title', 'thumbnail_tag', 'slug', 'publish', 'status', 'cat_to_str']
     list_filter = ('publish', 'status')
     search_fields = ('title', 'description')
     prepopulated_fields = {'slug': ('title',)}
